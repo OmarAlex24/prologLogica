@@ -13,3 +13,6 @@ progenitor(marge,maggie).
 
 padre(X,Y) :- hombre(X), progenitor(X,Y).
 madre(X,Y) :- mujer(X), progenitor(X,Y).
+
+hermano(X,Y) :- hombre(X), padre(Z,X), padre(Z,Y), madre(W,X), madre(W,Y), X\==Y.
+hermana(X,Y) :- mujer(X), padre(Z,X), padre(Z,Y), madre(W,X), madre(W,Y), X\==Y.
