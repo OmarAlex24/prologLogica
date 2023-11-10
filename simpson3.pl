@@ -45,8 +45,8 @@ hermana(X,Y) :- mujer(X), padre(Z,X), padre(Z,Y), madre(W,X), madre(W,Y), X\==Y.
 abuelo(X,Y) :- padre(Z,Y), padre(X,Z).
 abuelo(X,Y) :- madre(Z,Y), padre(X,Z).
 
-abuelo(X,Y) :- padre(Z,Y), madre(X,Z).
-abuelo(X,Y) :- madre(Z,Y), madre(X,Z).
+abuela(X,Y) :- padre(Z,Y), madre(X,Z).
+abuela(X,Y) :- madre(Z,Y), madre(X,Z).
 
 esposos(X,Y) :- progenitor(X,Z), progenitor(Y,Z).
 
@@ -58,5 +58,8 @@ cuñada(X,Y) :- mujer(X), esposos(X,Z), hermano(Z,Y).
 tio(X,Y) :- progenitor(Z,Y), hermano(X,Z).
 tia(X,Y) :- progenitor(Z,Y), hermana(X,Z).
 
-sobrino(X,Y) :- hombre(X), progenitor(Z,X).
-sobrina(X,Y) :- mujer(X), progenitor(Z,X), cuñado(Y,Z).
+primo(X,Y) :- hombre(X), progenitor(Z,X), progenitor(W,Y), hermano(Z,W).
+primo(X,Y) :- hombre(X), progenitor(Z,X), progenitor(W,Y), hermana(Z,W).
+
+prima(X,Y) :- mujer(X), progenitor(Z,X), progenitor(W,Y), hermano(Z,W).
+prima(X,Y) :- mujer(X), progenitor(Z,X), progenitor(W,Y), hermana(Z,W).
